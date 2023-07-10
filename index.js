@@ -1,4 +1,3 @@
-/* eslint-env node */
 'use strict';
 
 const Funnel = require('broccoli-funnel');
@@ -6,12 +5,13 @@ const MergeTrees = require('broccoli-merge-trees');
 const Path = require('path');
 
 module.exports = {
-  name: 'ember-mapbox-gl-draw',
+  name: require('./package').name,
 
   treeForPublic(vendorTree) {
     const mapboxGlDrawTree = new Funnel(Path.dirname(require.resolve('@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.js')), {
       srcDir: '/svg',
-      destDir: '/assets/images'
+      destDir: '/assets/images',
+      allowEmpty: true
     });
 
     if (vendorTree) {
@@ -34,26 +34,8 @@ module.exports = {
     return mapboxGlTree;
   },
 
-  treeForVendor(vendorTree) {
-    const mapboxGlDrawTree = new Funnel(Path.dirname(require.resolve('@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.js')), {
-      files: [ 'mapbox-gl-draw.js' ],
-    });
-
-    if (vendorTree) {
-      return new MergeTrees([ vendorTree, mapboxGlDrawTree ]);
-    }
-
-    return mapboxGlDrawTree;
-  },
-
   included(app) {
     this._super.included.apply(this, arguments);
-
-    app.import('vendor/mapbox-gl-draw.js', {
-      using: [
-        { transformation: 'amd', as: 'mapbox-gl-draw' }
-      ]
-    });
 
     app.import('app/styles/mapbox-gl-draw.css');
   }
