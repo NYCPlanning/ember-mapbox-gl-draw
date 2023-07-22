@@ -1,11 +1,11 @@
 {
-  "name": "ember-mapbox-gl-draw",
+  "name": "@nycplanning/ember-mapbox-gl-draw",
   "version": "2.0.0",
   "description": "Ember addon to import mapbox-gl-draw.",
   "keywords": [
     "ember-addon"
   ],
-  "repository": "https://github.com/kturney/ember-mapbox-gl-draw",
+  "repository": "https://github.com/NYCPlanning/ember-mapbox-gl-draw",
   "license": "MIT",
   "author": "Kyle Turney <turney.kyle@gmail.com>",
   "directories": {

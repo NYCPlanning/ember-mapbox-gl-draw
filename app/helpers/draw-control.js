@@ -1,1 +1,1 @@
-export { default, drawControl } from 'ember-mapbox-gl-draw/helpers/draw-control';
+export { default, drawControl } from '@nycplanning/ember-mapbox-gl-draw/helpers/draw-control';
